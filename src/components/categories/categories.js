@@ -8,7 +8,8 @@ const Categories = props => {
   return(
     <section>
       <ul>
-        {props.list.map((list,id) => {
+        {console.log(props.theState)}
+        {props.categories.map((list,id) => {
           return <li onClick={()=>props.change(list.name)} key={id}>{list.displayName}</li>
         })}
       </ul>
@@ -17,9 +18,10 @@ const Categories = props => {
 }
 
 const mapStateToProps = state =>({
-  list: state.categories.list
+  categories: state.categories.list,
+  theState: state
 });
 
-const mapDispatchToProps = {change};
+const mapDispatchToProps = {change };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

@@ -1,6 +1,6 @@
 let initialState = {
   list: [{name:'electronics',displayName:'Electronics' ,description:'The electronics section' },{name:'food' ,displayName: 'Food' ,description:'This is the food section' }],
-  active: {name:'electronics',displayName:'Electronics' ,description:'The electronics section' }
+  active: 'electronics'
 }
 
 export default (state = initialState, action) =>{

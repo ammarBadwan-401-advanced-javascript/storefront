@@ -1,5 +1,6 @@
 let initialState = {
-  list: [{name:'electronics',displayName:'Electronics' ,description:'The electronics section' },{name:'food' ,displayName: 'Food' ,description:'This is the food section' }],
+  list: [{name:'electronics',displayName:'Electronics' ,description:'The electronics section' },
+  {name:'food' ,displayName: 'Food' ,description:'This is the food section' },{ name: 'clothing', displayName: 'Clothing',description:'This is the Clothing section' }],
   active: 'electronics'
 }
 

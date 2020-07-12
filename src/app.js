@@ -11,8 +11,10 @@ export default props =>{
   return(
     <>
       <Header/>
-      <Categories/>
-      <Products/>
+      <main className="mainBody">
+        <Categories/>
+        <Products/>
+      </main>
       <Footer/>
     </>
   )

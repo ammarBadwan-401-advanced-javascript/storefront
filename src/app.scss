@@ -46,3 +46,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.mainBody{
+	min-height:calc(100vh - 114px);
+}
+
+footer{
+	background-color: #3f51b5;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	
+	p{
+		color: white;
+		padding-left: 50px;
+	}
+}

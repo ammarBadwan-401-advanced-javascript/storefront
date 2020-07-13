@@ -43,7 +43,7 @@ const Products = props => {
     
     <Grid container spacing={4} className={classes.gridContainer} >
       {console.log('hi')}
-      {console.log(props.products)}
+      {console.log(props)}
           {props.products.map((val,id)=>{
             return(
               <Grid item xs={4} key={id} >
@@ -64,7 +64,7 @@ const Products = props => {
                   </CardContent>
                   <CardActions>
                     Price: {val.price}
-                    <Button onClick={()=>props.add(val)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
+                    <Button onClick={()=>props.add(val,props.active)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
                   </CardActions>
                </Card>
               </Grid>
@@ -76,7 +76,7 @@ const Products = props => {
 
 const mapStateToProps = state =>({
   products: state.products,
-  state,
+  active: state.categories.active
 });
 
 const mapDispatchToProps = { add };

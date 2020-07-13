@@ -1,4 +1,4 @@
-# LAB - 36
+# LAB - 37
 
 ## Storefront 
 
@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [Pull Request](https://github.com/ammarBadwan-401-advanced-javascript/storefront/pull/1)
+- [Pull Request](https://github.com/ammarBadwan-401-advanced-javascript/storefront/pull/2)
 
 ### How to initialize the application
 
@@ -20,6 +20,7 @@
 4. Products.js
 5. App.js
 6. Index.js
+7. Cart.js
 
 ### UML
 

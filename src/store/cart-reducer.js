@@ -10,9 +10,10 @@ export default (state = initialState, action) => {
   }
 }
 
-export const add = (item) =>{
+export const add = (item,active) =>{
   return{
     type: 'ADD',
-    payload: item
+    payload: item,
+    active,
   }
 }

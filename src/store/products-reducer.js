@@ -12,16 +12,27 @@ let initialState =[
     { name: 'Bread', category: 'food', description:'Toast Bread',price: 2.39, count: 90 },
     ];
 export default (state = initialState, action) =>{
-  let {type,payload} = action;
+  let {type,payload,active} = action;
   switch(type){
     case 'CHANGE':
     return initialState.filter(val=>{
         if(val.category === payload) return val;
-      })
+      });
 
     case 'ADD':
-      
+      console.log(active)
+      initialState = initialState.map(val=>{
+        if(val.name === payload.name){
+          return {...val, count:val.count-1}
+         } 
+         return val;
+      });
+      return initialState.filter(val=>{
+        if(val.category === active) return val;
+      });
     default:
-      return state
+      return state.filter(val=>{
+        if(val.category === 'electronics') return val;
+      });
   }
 }

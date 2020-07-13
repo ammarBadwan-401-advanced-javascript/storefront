@@ -25,7 +25,7 @@ const Header = props =>{
         <Typography  variant="h6" className={classes.title}>
           Ammar's Store
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Button color="inherit">Cart</Button>
       </Toolbar>
     </AppBar>
   )

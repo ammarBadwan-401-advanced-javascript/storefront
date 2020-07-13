@@ -1,5 +1,8 @@
 import React from 'react';
+
+//Redux
 import { connect } from 'react-redux';
+import { add } from '../../store/cart-reducer';
 
 //Material UI modules
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,6 +11,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
   root: {
     minWidth: 200,
@@ -27,16 +31,22 @@ const useStyles = makeStyles({
     paddingLeft:'20px',
     paddingRight:'20px',
   },
+  button: {
+    marginLeft: '20px',
+  },
 });
 
 
 const Products = props => {
   const classes = useStyles();
   return(
+    
     <Grid container spacing={4} className={classes.gridContainer} >
+      {console.log('hi')}
+      {console.log(props.products)}
           {props.products.map((val,id)=>{
             return(
-              <Grid item xs={4} >
+              <Grid item xs={4} key={id} >
                 <Card className={classes.root} variant="outlined">
                   <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -54,6 +64,7 @@ const Products = props => {
                   </CardContent>
                   <CardActions>
                     Price: {val.price}
+                    <Button onClick={()=>props.add(val)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
                   </CardActions>
                </Card>
               </Grid>
@@ -64,11 +75,14 @@ const Products = props => {
 }
 
 const mapStateToProps = state =>({
-  products: state.products.list
+  products: state.products,
+  state,
 });
 
+const mapDispatchToProps = { add };
 
-export default connect(mapStateToProps)(Products);
+
+export default connect(mapStateToProps,mapDispatchToProps)(Products);
 
 
 /*

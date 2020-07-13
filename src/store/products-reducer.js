@@ -1,5 +1,4 @@
-let initialState = {
-    products: [
+let initialState =[
     {name:'iPhone 11' ,category: 'electronics',description: 'iPhone 11 from apple.' ,price: 900 ,count:8 },
     {name:'Galaxy S20' ,category: 'electronics',description: 'Galaxy S20 from Samsung' ,price: 750 ,count:15 },    
     {name:'Pizza' ,category: 'food' ,description:'Pepperoni Pizza' ,price:5 ,count:10 },
@@ -11,18 +10,18 @@ let initialState = {
     { name: 'Apples', category: 'food', description:'Red apples',price: .99, count: 500 },
     { name: 'Eggs', category: 'food',description:'Nice round eggs', price: 1.99, count: 12 },
     { name: 'Bread', category: 'food', description:'Toast Bread',price: 2.39, count: 90 },
-    ]
-}
-
+    ];
 export default (state = initialState, action) =>{
   let {type,payload} = action;
   switch(type){
     case 'CHANGE':
-    return {list: initialState.products.filter(val=>{
+    return initialState.filter(val=>{
         if(val.category === payload) return val;
-      })}
+      })
 
+    case 'ADD':
+      
     default:
-      return {list:[]}
+      return state
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 // Redux modules
 import { connect } from 'react-redux';
-import { change } from '../../store/categories-store';
+import { change } from '../../store/categories-reducer';
 
 //Material UI modules
 

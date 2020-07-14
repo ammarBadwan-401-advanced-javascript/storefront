@@ -91,7 +91,6 @@ const mapDispatchToProps = (dispatch, getState) => ({
   get: ()=> dispatch(actions.getProducts()),
   addItem: (val, props)=> {
     dispatch(actions.addToCart(val, props));
-    dispatch(actions.getProducts());
   },
 });
 

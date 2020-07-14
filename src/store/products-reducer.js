@@ -5,17 +5,19 @@ export default (state = initialState, action) =>{
     case 'GET':
       console.log(payload);
       initialState = payload;
-      return payload;
+      return payload.filter(val=>{
+        if(val.category === payload) return val;
+      });
     case 'CHANGE':
     return initialState.filter(val=>{
         if(val.category === payload) return val;
       });
 
     case 'ADD':
-      console.log(active)
+      console.log(payload)
       initialState = initialState.map(val=>{
-        if(val.name === payload.name){
-          return {...val, count:val.count-1}
+        if(val._id === payload._id){
+          return {...val, inStock:val.inStock-1}
          } 
          return val;
       });
@@ -24,7 +26,7 @@ export default (state = initialState, action) =>{
       });
     default:
       return state.filter(val=>{
-        if(val.category === 'electronics') return val;
+        if(val.category === active) return val;
       });
   }
 }

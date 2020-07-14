@@ -1,7 +1,6 @@
 import React from 'react';
 // Redux modules
 import { connect } from 'react-redux';
-import { add } from '../../store/cart-reducer';
 
 // Material UI
 import Button from '@material-ui/core/Button';
@@ -41,7 +40,7 @@ const mapStateToProps = state =>({
   cart: state.cart
 });
   
-const mapDispatchToProps = { add };
+const mapDispatchToProps = { };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart);
 

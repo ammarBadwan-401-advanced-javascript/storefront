@@ -1,8 +1,8 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 
 //Redux
 import { connect } from 'react-redux';
-import { add } from '../../store/cart-reducer';
+import * as actions from '../../store/actions';
 
 //Material UI modules
 import { makeStyles } from '@material-ui/core/styles';
@@ -39,14 +39,23 @@ const useStyles = makeStyles({
 
 const Products = props => {
   const classes = useStyles();
+  const fetchData = (e) => {
+    e && e.preventDefault();
+    props.get();
+  }
+
+  useEffect (()=>{
+    fetchData()
+  },[]);
+
   return(
     
     <Grid container spacing={4} className={classes.gridContainer} >
       {console.log('hi')}
       {console.log(props)}
-          {props.products.map((val,id)=>{
+          {props.products.map(val=>{
             return(
-              <Grid item xs={4} key={id} >
+              <Grid item xs={4} key={val._id} >
                 <Card className={classes.root} variant="outlined">
                   <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -56,7 +65,7 @@ const Products = props => {
                       
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                      Count: {val.count}
+                      Count: {val.inStock}
                     </Typography>
                     <Typography variant="body2" component="p">
                       Description: {val.description}
@@ -64,7 +73,7 @@ const Products = props => {
                   </CardContent>
                   <CardActions>
                     Price: {val.price}
-                    <Button onClick={()=>props.add(val,props.active)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
+                    <Button onClick={()=>props.addItem(val,props.active)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
                   </CardActions>
                </Card>
               </Grid>
@@ -79,7 +88,10 @@ const mapStateToProps = state =>({
   active: state.categories.active
 });
 
-const mapDispatchToProps = { add };
+const mapDispatchToProps = (dispatch, getState) => ({ 
+  get: ()=> dispatch(actions.getProducts()),
+  addItem: (val, props)=> dispatch(actions.addToCart(val, props)),
+});
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);
@@ -96,4 +108,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(Products);
             </div> 
         )
       })}
+
+
+                          <Button onClick={()=>props.add(val,props.active)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
 */

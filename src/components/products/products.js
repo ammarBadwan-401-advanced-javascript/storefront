@@ -39,13 +39,12 @@ const useStyles = makeStyles({
 
 const Products = props => {
   const classes = useStyles();
-  const fetchData = (e) => {
-    e && e.preventDefault();
+  const fetchProducts = () => {
     props.get();
   }
 
   useEffect (()=>{
-    fetchData()
+    fetchProducts()
   },[]);
 
   return(
@@ -90,25 +89,12 @@ const mapStateToProps = state =>({
 
 const mapDispatchToProps = (dispatch, getState) => ({ 
   get: ()=> dispatch(actions.getProducts()),
-  addItem: (val, props)=> dispatch(actions.addToCart(val, props)),
+  addItem: (val, props)=> {
+    dispatch(actions.addToCart(val, props));
+    dispatch(actions.getProducts());
+  },
 });
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);
 
-
-/*
-      {props.products.map((val,id)=>{
-        return (
-            <div key={id}>
-                <p>Product: {val.name}</p> 
-                <p>Description: {val.description}</p> 
-                <p>Count: {val.count}</p> 
-                <p>Price: {val.price}</p> 
-            </div> 
-        )
-      })}
-
-
-                          <Button onClick={()=>props.add(val,props.active)} variant="outlined" color="primary" className={classes.button} >Add to cart</Button>
-*/

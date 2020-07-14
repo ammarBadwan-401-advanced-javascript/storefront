@@ -10,7 +10,9 @@ export const getProducts = () => dispatch =>{
 }
 
 export const addToCart = (item,active) => dispatch => {
-  return dispatch(addItem(item,active));
+  return superagent.put(`${API}/products/${item._id}`).send({...item, inStock: item.inStock-1}).then(data=>{
+      dispatch(addItem(data.body,active));
+  });
 }
 
 export const getAction = payload => {
